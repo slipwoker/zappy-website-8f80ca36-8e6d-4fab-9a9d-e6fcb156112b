@@ -1,0 +1,644 @@
+<!DOCTYPE html><html lang="he" dir="rtl"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>הכל לבית שירותי הנדימן | הנדימן מומלץ באזור</title>
+  <meta name="description" content="בית - הכל לבית שירותי הנדימן provides professional שירותי תחזוקה ותיקונים services. Specializing in הנדימן מומלץ באזור.">
+  <meta name="keywords" content="הנדימן מומלץ באזור, שירותי תיקונים לבית מחיר, הנדימן זול ואמין, הנדימן מקצועי">
+  <meta name="robots" content="index, follow">
+  
+  <meta property="og:title" content="הכל לבית שירותי הנדימן | הנדימן מומלץ באזור">
+  <meta property="og:description" content="בית - הכל לבית שירותי הנדימן provides professional שירותי תחזוקה ותיקונים services. Specializing in הנדימן מומלץ באזור.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="he_IL">
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="הכל לבית שירותי הנדימן | הנדימן מומלץ באזור">
+  <meta name="twitter:description" content="בית - הכל לבית שירותי הנדימן provides professional שירותי תחזוקה ותיקונים services. Specializing in הנדימן מומלץ באזור.">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicon-512x512.png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <!-- Cookie Consent -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3/dist/cookieconsent.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3/dist/cookieconsent.umd.js"></script>
+    <!-- Mickidum Accessibility Toolbar -->
+    <script src="https://cdn.jsdelivr.net/gh/mickidum/acc_toolbar/acctoolbar/acctoolbar.min.js"></script>
+<!-- Zappy Analytics -->
+<script>
+(function() {
+  'use strict';
+  
+  // Configuration
+  var config = {
+    websiteId: '8f80ca36-8e6d-4fab-9a9d-e6fcb156112b',
+    apiUrl: 'https://api.zappy5.com/api/analytics/track',
+    sessionDuration: 30 * 60 * 1000, // 30 minutes
+    visitorDuration: 30 * 24 * 60 * 60 * 1000, // 30 days
+    trackPageViews: true,
+    trackClicks: true,
+    trackFormSubmissions: true
+  };
+  
+  // Generate or retrieve persistent visitor ID (30 days)
+  function getVisitorId() {
+    var visitorKey = 'zappy_visitor_' + config.websiteId;
+    var visitor = null;
+    
+    try {
+      visitor = localStorage.getItem(visitorKey);
+      if (visitor) {
+        var visitorData = JSON.parse(visitor);
+        var now = Date.now();
+        
+        // Check if visitor ID is still valid (30 days)
+        if (now - visitorData.created < config.visitorDuration) {
+          // Update last seen timestamp
+          visitorData.lastSeen = now;
+          localStorage.setItem(visitorKey, JSON.stringify(visitorData));
+          return visitorData.id;
+        }
+      }
+    } catch (e) {
+      console.warn('Zappy Analytics: LocalStorage not available');
+    }
+    
+    // Generate new visitor ID
+    var newVisitorId = 'zv_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    
+    try {
+      localStorage.setItem(visitorKey, JSON.stringify({
+        id: newVisitorId,
+        created: Date.now(),
+        lastSeen: Date.now()
+      }));
+    } catch (e) {
+      // Continue without local storage
+    }
+    
+    return newVisitorId;
+  }
+  
+  // Generate or retrieve session ID (30 minutes)
+  function getSessionId() {
+    var sessionKey = 'zappy_session_' + config.websiteId;
+    var session = null;
+    
+    try {
+      session = sessionStorage.getItem(sessionKey);
+      if (session) {
+        var sessionData = JSON.parse(session);
+        var now = Date.now();
+        
+        // Check if session is still valid
+        if (now - sessionData.timestamp < config.sessionDuration) {
+          // Update timestamp
+          sessionData.timestamp = now;
+          sessionStorage.setItem(sessionKey, JSON.stringify(sessionData));
+          return sessionData.id;
+        }
+      }
+    } catch (e) {
+      console.warn('Zappy Analytics: SessionStorage not available');
+    }
+    
+    // Generate new session ID
+    var newSessionId = 'zs_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    
+    try {
+      sessionStorage.setItem(sessionKey, JSON.stringify({
+        id: newSessionId,
+        timestamp: Date.now()
+      }));
+    } catch (e) {
+      // Continue without session storage
+    }
+    
+    return newSessionId;
+  }
+  
+  var visitorId = getVisitorId();
+  var sessionId = getSessionId();
+  
+  // Track an event
+  function trackEvent(eventType, data) {
+    data = data || {};
+    
+    var eventData = {
+      website_id: config.websiteId,
+      event_type: eventType,
+      page_path: window.location.pathname,
+      referrer: document.referrer || 'direct',
+      visitor_id: visitorId,
+      session_id: sessionId,
+      metadata: data
+    };
+    
+    // Use sendBeacon if available (better for page unload events)
+    if (navigator.sendBeacon) {
+      var blob = new Blob([JSON.stringify(eventData)], { type: 'application/json' });
+      navigator.sendBeacon(config.apiUrl, blob);
+    } else {
+      // Fallback to fetch
+      fetch(config.apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(eventData),
+        keepalive: true
+      }).catch(function(error) {
+        console.warn('Zappy Analytics: Failed to track event', error);
+      });
+    }
+  }
+  
+  // Track page view
+  if (config.trackPageViews) {
+    trackEvent('pageview', {
+      title: document.title,
+      url: window.location.href
+    });
+  }
+  
+  // Track clicks on important elements
+  if (config.trackClicks) {
+    document.addEventListener('click', function(e) {
+      var target = e.target;
+      
+      // Track button clicks (counted as actions)
+      if (target.tagName === 'BUTTON' || target.closest('button')) {
+        var button = target.tagName === 'BUTTON' ? target : target.closest('button');
+        trackEvent('click', {
+          element: 'button',
+          text: button.textContent.trim().substring(0, 100),
+          id: button.id || null,
+          class: button.className || null
+        });
+      }
+      
+      // Track link clicks (navigation - not counted as actions)
+      else if (target.tagName === 'A' || target.closest('a')) {
+        var link = target.tagName === 'A' ? target : target.closest('a');
+        trackEvent('navigation', {
+          element: 'link',
+          text: link.textContent.trim().substring(0, 100),
+          href: link.href,
+          external: link.hostname !== window.location.hostname
+        });
+      }
+    }, true);
+  }
+  
+  // Track form submissions
+  if (config.trackFormSubmissions) {
+    document.addEventListener('submit', function(e) {
+      var form = e.target;
+      
+      trackEvent('form_submit', {
+        form_id: form.id || null,
+        form_name: form.name || null,
+        form_action: form.action || null,
+        form_method: form.method || 'GET'
+      });
+    }, true);
+  }
+  
+  // Track time on page (send on page unload)
+  var pageLoadTime = Date.now();
+  
+  window.addEventListener('beforeunload', function() {
+    var timeOnPage = Math.floor((Date.now() - pageLoadTime) / 1000); // in seconds
+    
+    trackEvent('page_unload', {
+      time_on_page: timeOnPage,
+      page_path: window.location.pathname
+    });
+  });
+  
+  // Expose tracking function globally for custom events
+  window.zappyAnalytics = {
+    track: trackEvent,
+    getVisitorId: function() { return visitorId; },
+    getSessionId: function() { return sessionId; }
+  };
+  
+})();
+</script>
+<!-- End Zappy Analytics -->
+
+    <style id="zappy-dropdown-submenu-styles">
+      /* ========== DESKTOP DROPDOWN SUBMENU STYLES ========== */
+      /* Base styles for dropdown submenus - parent must be positioned */
+      .nav-menu li:has(.sub-menu), nav li:has(.sub-menu), .navbar li:has(.sub-menu), #navMenu li:has(.sub-menu) { position: relative; }
+      /* Submenu base - hidden by default */
+      .nav-menu .sub-menu, nav .sub-menu, .navbar .sub-menu, #navMenu .sub-menu { display: block !important; position: absolute !important; top: 100%; left: 0; min-width: 220px; background: white; border-radius: 8px; box-shadow: 0 8px 25px rgba(0,0,0,0.15); padding: 8px 0; opacity: 0; visibility: hidden; transform: translateY(10px); transition: all 0.3s ease; z-index: 1000; list-style: none; pointer-events: none; }
+      /* CRITICAL: Desktop hover styles to show dropdown */
+      .nav-menu li:hover > .sub-menu, nav li:hover > .sub-menu, .navbar li:hover > .sub-menu, #navMenu li:hover > .sub-menu { opacity: 1 !important; visibility: visible !important; transform: translateY(0) !important; pointer-events: auto !important; }
+      /* Submenu item styling */
+      .sub-menu li { list-style: none; margin: 0; padding: 0; }
+      .sub-menu a { display: block !important; padding: 10px 16px !important; color: #333 !important; font-weight: 500; text-decoration: none; white-space: nowrap; transition: background-color 0.2s; }
+      .sub-menu a:hover { background-color: #f5f5f5; }
+      /* RTL (Hebrew/Arabic) dropdown positioning */
+      [dir="rtl"] .nav-menu .sub-menu, [dir="rtl"] nav .sub-menu, [dir="rtl"] .navbar .sub-menu, html[lang="he"] .nav-menu .sub-menu, html[lang="he"] nav .sub-menu, html[lang="he"] .navbar .sub-menu, html[lang="ar"] .nav-menu .sub-menu, html[lang="ar"] nav .sub-menu, html[lang="ar"] .navbar .sub-menu { left: auto !important; right: 0 !important; }
+      /* Hide empty dropdown menus */
+      .sub-menu:empty, .sub-menu:not(:has(li:not(.zappy-hidden-menu-item))), .sub-menu:not(:has(li)) { display: none !important; opacity: 0 !important; visibility: hidden !important; pointer-events: none !important; }
+      /* Desktop: show submenu on Menu Group hover */
+      li:has(.menu-group-title):hover > .sub-menu { opacity: 1 !important; visibility: visible !important; transform: translateY(0) !important; pointer-events: auto !important; }
+      /* Menu Group title styling */
+      .nav-menu > li > .menu-group-title, #navMenu > li > .menu-group-title { display: inline-block; padding: 0.5rem 1rem; cursor: default; user-select: none; }
+      
+      /* ========== MOBILE SUBMENU STYLES ========== */
+      @media (max-width: 768px) {
+        .nav-menu .sub-menu, nav .sub-menu, .navbar .sub-menu, #navMenu .sub-menu { position: static !important; transform: none !important; box-shadow: none !important; background: transparent !important; max-height: 0; overflow: hidden; opacity: 0; visibility: hidden; transition: max-height 0.3s ease, opacity 0.3s ease; padding: 0 !important; border-radius: 0 !important; }
+        .sub-menu.mobile-expanded { max-height: 500px !important; opacity: 1 !important; visibility: visible !important; padding: 8px 0 8px 16px !important; }
+        [dir="rtl"] .sub-menu.mobile-expanded, html[lang="he"] .sub-menu.mobile-expanded { padding: 8px 16px 8px 0 !important; }
+        /* Disable hover behavior on mobile */
+        .nav-menu li:hover > .sub-menu, nav li:hover > .sub-menu, .navbar li:hover > .sub-menu, #navMenu li:hover > .sub-menu { opacity: 0; visibility: hidden; pointer-events: none; }
+        .nav-menu li > .sub-menu.mobile-expanded, nav li > .sub-menu.mobile-expanded, .navbar li > .sub-menu.mobile-expanded, #navMenu li > .sub-menu.mobile-expanded { opacity: 1 !important; visibility: visible !important; pointer-events: auto !important; }
+        .nav-menu li:has(.sub-menu), nav li:has(.sub-menu), .navbar li:has(.sub-menu), #navMenu li:has(.sub-menu) { display: flex !important; flex-wrap: wrap !important; align-items: center !important; }
+        .nav-menu li:has(.sub-menu) > a, nav li:has(.sub-menu) > a, .navbar li:has(.sub-menu) > a, #navMenu li:has(.sub-menu) > a { flex: 1 !important; }
+        .nav-menu li:has(.sub-menu) > a [class*="chevron"], .nav-menu li:has(.sub-menu) > a [class*="arrow"], .nav-menu li:has(.sub-menu) > a .fa-chevron-down, .nav-menu li:has(.sub-menu) > a .fa-angle-down, nav li:has(.sub-menu) > a [class*="chevron"], nav li:has(.sub-menu) > a [class*="arrow"], #navMenu li:has(.sub-menu) > a [class*="chevron"], #navMenu li:has(.sub-menu) > a [class*="arrow"] { display: none !important; visibility: hidden !important; }
+        .mobile-submenu-toggle { display: flex !important; align-items: center !important; justify-content: center !important; width: 44px !important; height: 44px !important; background: transparent !important; border: none !important; cursor: pointer !important; }
+        .mobile-submenu-toggle::after { content: '' !important; width: 0 !important; height: 0 !important; border-left: 6px solid transparent !important; border-right: 6px solid transparent !important; border-top: 7px solid currentColor !important; transition: transform 0.3s ease !important; }
+        .mobile-submenu-toggle.expanded::after { transform: rotate(180deg) !important; }
+        .nav-menu li:has(.sub-menu) > .sub-menu, nav li:has(.sub-menu) > .sub-menu { flex-basis: 100% !important; width: 100% !important; }
+        .sub-menu a { padding: 10px 0 !important; display: block !important; }
+        .nav-menu li:has(.sub-menu) > .menu-group-title, nav li:has(.sub-menu) > .menu-group-title, .navbar li:has(.sub-menu) > .menu-group-title, #navMenu li:has(.sub-menu) > .menu-group-title { flex: 1 !important; }
+      }
+      @media (min-width: 769px) { .mobile-submenu-toggle { display: none !important; } }
+    </style>
+</head>
+<body>
+  <nav class="navbar" dir="rtl">
+  <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+    <svg class="hamburger-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+    </svg>
+    <svg class="close-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" style="display:none;">
+      <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+    </svg>
+  </button>
+  
+  <button class="phone-header-btn" aria-label="Call">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+    </svg>
+  </button>
+  
+  <div class="nav-container">
+    <div class="nav-brand">
+      <a href="/" class="logo-link">
+        <img src="/assets/business-logo.webp" alt="הכל לבית שירותי הנדימן" class="logo" />
+      </a>
+    </div>
+    
+    <ul class="nav-menu" id="navMenu"><li><a href="/services">שירותים</a></li><li><a href="/about">אודות</a></li></ul>
+    
+    <div class="nav-cta-container">
+      <a href="/contact" class="nav-cta-btn">צור קשר</a>
+    </div>
+  </div>
+</nav>
+  
+  <main>
+    <section class="home-hero-section" data-layout-spec="בית-hero" data-hero-type="fullscreen-card">
+  <!-- Background Image -->
+  <img data-hero-bg="true" class="home-hero-bg" data-placeholder="home-hero-bg" data-context="Professional handyman workshop scene: well-organized workbench with quality tools (drill, wrench, level, measuring tape), clean workspace with toolbox, bright natural lighting, modern Israeli home repair setting, trustworthy and reliable atmosphere, professional technician's hands arranging tools, warm inviting colors, high-quality professional photography" width="1920" height="1080" src="/assets/site-home-hero-bg.webp" alt="סביבת עבודה מקצועית של הנדימן עם כלי עבודה מסודרים">
+  
+  <!-- Scrim Overlay -->
+  <div class="home-hero-scrim" aria-hidden="true"></div>
+  
+  <!-- Content Container -->
+  <div class="home-hero-content">
+    <!-- Overlay Card -->
+    <div class="home-hero-card">
+      <h1>תיקונים מהירים ואמינים לכל פינה בבית</h1>
+      <h3 class="home-hero-subtitle">טכנאים מקצועיים עם ניסיון רב, עבודה נקייה ותקשורת ישירה. אנחנו כאן כדי לפתור כל בעיה בבית שלכם.</h3>
+      
+      <!-- Contact Form -->
+      <form class="contact-form home-hero-form">
+        <h3 class="home-hero-form-title">תגובה בדרך כלל תוך שעות עבודה</h3>
+        
+        <div class="home-hero-form-fields">
+          <input type="text" name="name" placeholder="שם מלא" required="" aria-label="שם מלא">
+          <input type="tel" name="phone" placeholder="טלפון" required="" aria-label="מספר טלפון">
+          <input type="text" name="message" placeholder="תיאור קצר של הבעיה" required="" aria-label="תיאור הבעיה">
+        </div>
+        
+        <div class="home-hero-cta-group">
+          <button type="submit" class="btn-primary home-hero-btn-primary">בקשה ליצירת קשר</button>
+          <a href="/services" class="home-hero-link-secondary">צפייה בשירותים</a>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  <!-- Bottom Divider -->
+  <div class="home-hero-divider-wrapper">
+    <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 1200 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="home-hero-divider-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" style="stop-color:rgba(34,39,46,0.85);stop-opacity:1"></stop>
+          <stop offset="100%" style="stop-color:var(--bg-light);stop-opacity:1"></stop>
+        </linearGradient>
+      </defs>
+      <path d="M0,80 L0,55 Q150,50 300,55 T600,50 Q750,55 900,50 T1200,55 L1200,80 Z" fill="url(#home-hero-divider-gradient)"></path>
+      <path d="M0,55 Q150,50 300,55 T600,50 Q750,55 900,50 T1200,55" stroke="var(--primary)" stroke-width="1" fill="none" opacity="0.3"></path>
+    </svg>
+  </div>
+</section>
+
+<section class="home-services-section" data-layout-spec="בית-services">
+  <div class="home-services-container">
+    <div class="home-services-header">
+      <h2>שירותי תיקונים לבית – בוצע נכון</h2>
+      <p>אנו מספקים מגוון רחב של שירותי תחזוקה ותיקונים לבית, עם דגש על איכות ביצוע גבוהה ושירות אמין. כל עבודה מבוצעת בקפידה ובמקצועיות, תוך שמירה על סטנדרטים גבוהים ועמידה בלוחות זמנים.</p>
+    </div>
+
+    <div class="home-services-grid">
+      <div class="home-services-card">
+        <div class="home-services-icon" data-element-type="icon" data-icon-type="svg">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21.71 8.71L15.29 2.29C15.2 2.2 15.09 2.13 14.98 2.07C14.87 2.01 14.75 1.98 14.63 1.98H9.37C9.25 1.98 9.13 2.01 9.02 2.07C8.91 2.13 8.8 2.2 8.71 2.29L2.29 8.71C2.2 8.8 2.13 8.91 2.07 9.02C2.01 9.13 1.98 9.25 1.98 9.37V14.63C1.98 14.75 2.01 14.87 2.07 14.98C2.13 15.09 2.2 15.2 2.29 15.29L8.71 21.71C8.8 21.8 8.91 21.87 9.02 21.93C9.13 21.99 9.25 22.02 9.37 22.02H14.63C14.75 22.02 14.87 21.99 14.98 21.93C15.09 21.87 15.2 21.8 15.29 21.71L21.71 15.29C21.8 15.2 21.87 15.09 21.93 14.98C21.99 14.87 22.02 14.75 22.02 14.63V9.37C22.02 9.25 21.99 9.13 21.93 9.02C21.87 8.91 21.8 8.8 21.71 8.71ZM20 14.17L14.17 20H9.83L4 14.17V9.83L9.83 4H14.17L20 9.83V14.17Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M12 8V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
+            <circle cx="12" cy="16" r="0.5" fill="currentColor" stroke="currentColor" stroke-width="0.5"></circle>
+          </svg>
+        </div>
+        <h3>תיקונים כלליים</h3>
+        <p>תיקון קירות, תקרות, דלתות ומסגרות. החלפת אביזרים ותיקוני צבע. פתרונות מהירים לכל בעיה ביתית.</p>
+      </div>
+
+      <div class="home-services-card">
+        <div class="home-services-icon" data-element-type="icon" data-icon-type="svg">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 22C12 22 20 18 20 12V5L12 2L4 5V12C4 18 12 22 12 22Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </div>
+        <h3>תיקוני אינסטלציה</h3>
+        <p>תיקון ברזים דולפים, החלפת סיפונים, פתיחת סתימות בכיורים וניקוז. שירות מהיר ויעיל למניעת נזקי מים.</p>
+      </div>
+
+      <div class="home-services-card">
+        <div class="home-services-icon" data-element-type="icon" data-icon-type="svg">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </div>
+        <h3>עבודות חשמל קלות</h3>
+        <p>החלפת מפסקים ושקעים, תיקון תאורה פנימית, התקנת גופי תאורה חדשים. עבודות חשמל בטוחות ומאושרות.</p>
+      </div>
+
+      <div class="home-services-card">
+        <div class="home-services-icon" data-element-type="icon" data-icon-type="svg">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5"></rect>
+            <path d="M9 3V21" stroke="currentColor" stroke-width="1.5"></path>
+            <circle cx="6" cy="12" r="1" fill="currentColor"></circle>
+            <path d="M15 8L18 12L15 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </div>
+        <h3>דלתות, חלונות וציריות</h3>
+        <p>תיקון ציריות רופפות, התאמת דלתות, החלפת מנעולים ובוכנות. שיפור תפקוד ואיטום של דלתות וחלונות.</p>
+      </div>
+    </div>
+
+    <div class="home-services-reassurance">
+      <div class="home-services-reassurance-item">
+        <div class="home-services-reassurance-icon" data-element-type="icon" data-icon-type="svg">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 11L12 14L22 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M21 12V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </div>
+        <p>תמחור שקוף ומראש</p>
+      </div>
+
+      <div class="home-services-reassurance-item">
+        <div class="home-services-reassurance-icon" data-element-type="icon" data-icon-type="svg">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"></circle>
+            <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+          </svg>
+        </div>
+        <p>הגעה בזמן המוסכם</p>
+      </div>
+
+      <div class="home-services-reassurance-item">
+        <div class="home-services-reassurance-icon" data-element-type="icon" data-icon-type="svg">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2"></circle>
+            <path d="M17 11L19 13L23 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </div>
+        <p>אזור עבודה נקי ומסודר</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="home-services-divider-wrapper">
+    <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 1200 20" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,20 L0,10 L200,10 L210,10 M220,10 L420,10 L430,10 M440,10 L640,10 L650,10 M660,10 L860,10 L870,10 M880,10 L1080,10 L1090,10 M1100,10 L1200,10 L1200,20 Z" fill="var(--bg-light)"></path>
+      <g stroke="var(--border-light)" stroke-width="1" fill="none">
+        <line x1="0" y1="10" x2="200" y2="10" stroke-dasharray="0"></line>
+        <line x1="210" y1="10" x2="420" y2="10" stroke-dasharray="4 4"></line>
+        <line x1="430" y1="10" x2="640" y2="10" stroke-dasharray="4 4"></line>
+        <line x1="650" y1="10" x2="860" y2="10" stroke-dasharray="4 4"></line>
+        <line x1="870" y1="10" x2="1080" y2="10" stroke-dasharray="4 4"></line>
+        <line x1="1090" y1="10" x2="1200" y2="10" stroke-dasharray="4 4"></line>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<section class="home-process-section" data-layout-spec="בית-process">
+  <div class="home-process-container">
+    <div class="home-process-grid">
+      <div class="home-process-intro">
+        <h2 class="home-process-title">איך זה עובד</h2>
+        <p class="home-process-description">תהליך פשוט ומהיר: פנייה ראשונית, אבחון מדויק, וביצוע מקצועי. אנחנו דואגים לכל שלב בדרך לפתרון מושלם.</p>
+      </div>
+      
+      <div class="home-process-steps">
+        <div class="home-process-step">
+          <div class="home-process-step-number">
+            <span>1</span>
+          </div>
+          <div class="home-process-step-content">
+            <h3 class="home-process-step-title">ספרו לנו מה קרה</h3>
+            <p class="home-process-step-text">פנייה טלפונית או דרך הטופס, ואנחנו מבינים את הבעיה ומתאמים הגעה.</p>
+          </div>
+        </div>
+        
+        <div class="home-process-step">
+          <div class="home-process-step-number">
+            <span>2</span>
+          </div>
+          <div class="home-process-step-content">
+            <h3 class="home-process-step-title">אישור היקף ותזמון</h3>
+            <p class="home-process-step-text">לאחר בדיקה ראשונית, אנחנו מציגים הערכת מחיר וזמן ביצוע ברור.</p>
+          </div>
+        </div>
+        
+        <div class="home-process-step">
+          <div class="home-process-step-number">
+            <span>3</span>
+          </div>
+          <div class="home-process-step-content">
+            <h3 class="home-process-step-title">תיקון, ניקיון ומסירה פשוטה</h3>
+            <p class="home-process-step-text">ביצוע העבודה במקצועיות, ניקיון האזור, ומסירה מסודרת עם הסבר קצר.</p>
+          </div>
+        </div>
+        
+        <div class="home-process-confirmation">
+          <svg data-no-icon-edit="true" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+          <span>תקבלו אישור ברור לפני תחילת העבודה</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="home-process-divider-wrapper">
+    <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 1200 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,60 L0,35 Q100,25 200,30 T400,20 Q500,25 600,18 T800,22 Q900,15 1000,20 T1200,8 L1200,60 Z" fill="var(--bg-light)"></path>
+    </svg>
+  </div>
+</section>
+
+<section class="home-showcase-section" data-layout-spec="בית-showcase">
+  <div class="home-showcase-container">
+    <div class="home-showcase-header">
+      <h2>תוצאות לפני ואחרי</h2>
+      <p>כל עבודה מתועדת בקפידה כדי להראות לכם איכות וניקיון בסיום. הנה כמה דוגמאות מעבודות אמיתיות שלנו.</p>
+    </div>
+
+    <div class="home-showcase-grid">
+      <div class="home-showcase-pair">
+        <div class="home-showcase-image-wrapper">
+          <div class="home-showcase-label">לפני</div>
+          <img data-placeholder="home-showcase-before-1" data-context="Before photo: worn cabinet door with misaligned hinge, visible gap, slightly crooked door hanging on white kitchen cabinet, natural lighting, close-up detail shot showing the problem clearly" width="600" height="450" src="/assets/site-home-showcase-before-1.webp" alt="דלת ארון לפני תיקון - ציר לא מיושר">
+        </div>
+        <div class="home-showcase-image-wrapper">
+          <div class="home-showcase-label home-showcase-label-after">אחרי</div>
+          <img data-placeholder="home-showcase-after-1" data-context="After photo: same cabinet door perfectly aligned, hinge adjusted, door sits flush and straight, clean white cabinet, professional finish, natural lighting matching the before photo" width="600" height="450" src="/assets/site-home-showcase-after-1.webp" alt="דלת ארון אחרי תיקון - ציר מיושר בצורה מושלמת">
+        </div>
+      </div>
+
+      <div class="home-showcase-pair">
+        <div class="home-showcase-image-wrapper">
+          <div class="home-showcase-label">לפני</div>
+          <img data-placeholder="home-showcase-before-2" data-context="Before photo: leaking pipe under bathroom sink, water stains visible, corroded pipe connection, dripping water, messy cabinet interior with cleaning supplies, realistic home maintenance problem" width="600" height="450" src="/assets/site-home-showcase-before-2.webp" alt="דליפת מים מצינור לפני תיקון">
+        </div>
+        <div class="home-showcase-image-wrapper">
+          <div class="home-showcase-label home-showcase-label-after">אחרי</div>
+          <img data-placeholder="home-showcase-after-2" data-context="After photo: same sink area with new pipe connection, no leaks, clean and dry, professional plumbing repair, organized cabinet interior, bright and clean, matching the before angle" width="600" height="450" src="/assets/site-home-showcase-after-2.webp" alt="צינור מתוקן אחרי עבודה - ללא דליפות">
+        </div>
+      </div>
+
+      <div class="home-showcase-pair">
+        <div class="home-showcase-image-wrapper">
+          <div class="home-showcase-label">לפני</div>
+          <img data-placeholder="home-showcase-before-3" data-context="Before photo: damaged wall with hole or crack, chipped paint, rough texture, visible imperfection on white or cream wall, residential interior, natural lighting showing the damage clearly" width="600" height="450" src="/assets/site-home-showcase-before-3.webp" alt="קיר פגום לפני תיקון">
+        </div>
+        <div class="home-showcase-image-wrapper">
+          <div class="home-showcase-label home-showcase-label-after">אחרי</div>
+          <img data-placeholder="home-showcase-after-3" data-context="After photo: same wall section perfectly patched and painted, smooth finish, seamless repair, fresh paint matching surrounding area, professional wall repair, clean and flawless surface" width="600" height="450" src="/assets/site-home-showcase-after-3.webp" alt="קיר משוקם אחרי תיקון וצביעה">
+        </div>
+      </div>
+    </div>
+
+    <p class="home-showcase-note">הדוגמאות המוצגות מתוך עבודות טיפוסיות שביצענו. התוצאה הסופית תלויה בסוג הבעיה, חומרי הגלם והמצב ההתחלתי.</p>
+  </div>
+
+  <div class="home-showcase-divider-wrapper">
+    <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 1200 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,60 L0,0 L1200,20 L1200,60 Z" fill="var(--bg-dark)"></path>
+      <line x1="0" y1="0" x2="1200" y2="20" stroke="var(--accent)" stroke-width="2"></line>
+    </svg>
+  </div>
+</section>
+
+<section class="home-cta-section" data-layout-spec="בית-cta">
+  <div class="home-cta-container">
+    <div class="home-cta-backplate" aria-hidden="true"></div>
+    <div class="home-cta-card">
+      <h2 class="home-cta-title">צריכים תיקון אמין ומהיר?</h2>
+      <p class="home-cta-description">ספרו לנו על הבעיה ונחזור אליכם במהירות עם פתרון מדויק. הנדימן מקצועי לכל עבודה.</p>
+      <a href="/contact" class="home-cta-button">צרו קשר עכשיו</a>
+      <p class="home-cta-reassurance">אנחנו מתמקדים בתקשורת ברורה וסיום מסודר של כל עבודה</p>
+    </div>
+  </div>
+</section>
+  </main>
+  
+  <footer class="site-footer"><div class="footer-container"><div class="footer-grid"><div class="footer-column footer-about"><img src="/assets/business-logo.webp" alt="הכל לבית שירותי הנדימן" class="logo" /><p class="footer-description">שירותי תחזוקה ותיקונים מקצועיים לבית ולעסק. זמינים עבורכם 24/7 לכל צורך.</p><div class="social-links"><a href="[facebook_handle]" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a><a href="[instagram_handle]" aria-label="Instagram"><i class="fab fa-instagram"></i></a><a href="[whatsapp_handle]" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a></div></div><div class="footer-column"><h3 class="footer-title">קישורים מהירים</h3><ul class="footer-links"><li><a href="/services">שירותים</a></li><li><a href="/about">אודות</a></li><li><a href="/contact">צור קשר</a></li></ul></div><div class="footer-column"><h3 class="footer-title">יצירת קשר</h3><ul class="contact-info"><li><i class="fas fa-envelope"></i><a href="mailto:[business_email]">[business_email]</a></li><li><i class="fas fa-phone"></i><a href="tel:[business_phone]">[business_phone]</a></li><li><a href="/"><i class="fas fa-map-marker-alt"></i><span>[business_address]</span></a></li></ul></div></div><div class="footer-bottom"><div class="footer-bottom-content"><div class="legal-links"><a href="/privacy">Privacy Policy</a><span class="separator">|</span><a href="/terms">Terms &amp; Conditions</a><span class="separator">|</span><a href="/accessibility">Accessibility</a></div><p class="copyright">© 2026 הכל לבית שירותי הנדימן. All rights reserved.</p><a href="https://zappy5.com" target="_blank" class="zappy-attribution">Generated by Zappy</a></div></div></div></footer>
+  
+  <a href="https://wa.me/[whatsapp_handle]" class="whatsapp-float" aria-label="WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+  
+  <script src="/script.js"></script>
+
+    <div data-integration="accessibility:toolbar"></div>
+
+    <script id="zappy-mobile-submenu-script">
+    (function() {
+      function initMobileSubmenuToggles() {
+        if (window.innerWidth > 768) {
+          document.querySelectorAll('.mobile-submenu-toggle').forEach(function(btn) { btn.remove(); });
+          document.querySelectorAll('.sub-menu.mobile-expanded').forEach(function(menu) { menu.classList.remove('mobile-expanded'); });
+          return;
+        }
+        var items = document.querySelectorAll('.nav-menu li:has(.sub-menu), nav li:has(.sub-menu), .navbar li:has(.sub-menu), #navMenu li:has(.sub-menu)');
+        items.forEach(function(li) {
+          if (li.querySelector('.mobile-submenu-toggle')) return;
+          var submenu = li.querySelector('.sub-menu');
+          var parentLink = li.querySelector(':scope > a');
+          if (!submenu || !parentLink) return;
+          var toggleBtn = document.createElement('button');
+          toggleBtn.className = 'mobile-submenu-toggle';
+          toggleBtn.setAttribute('aria-label', 'Toggle submenu');
+          toggleBtn.setAttribute('type', 'button');
+          parentLink.insertAdjacentElement('afterend', toggleBtn);
+          toggleBtn.addEventListener('click', function(e) {
+            e.preventDefault(); e.stopPropagation();
+            document.querySelectorAll('.sub-menu.mobile-expanded').forEach(function(menu) {
+              if (menu !== submenu) { menu.classList.remove('mobile-expanded'); var t = menu.parentElement.querySelector('.mobile-submenu-toggle'); if(t) t.classList.remove('expanded'); }
+            });
+            submenu.classList.toggle('mobile-expanded');
+            toggleBtn.classList.toggle('expanded');
+          });
+        });
+      }
+      if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', initMobileSubmenuToggles); }
+      else { initMobileSubmenuToggles(); }
+      var resizeTimer; window.addEventListener('resize', function() { clearTimeout(resizeTimer); resizeTimer = setTimeout(initMobileSubmenuToggles, 250); });
+      // Re-initialize when mobile menu becomes visible (MutationObserver)
+      var observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          if (mutation.type === 'attributes') {
+            var target = mutation.target;
+            if (target.classList && (target.classList.contains('active') || target.classList.contains('open'))) {
+              setTimeout(initMobileSubmenuToggles, 100);
+            }
+          }
+        });
+      });
+      setTimeout(function() {
+        document.querySelectorAll('.mobile-menu, .nav-menu, #navMenu, nav').forEach(function(menu) {
+          observer.observe(menu, { attributes: true, attributeFilter: ['class', 'style'] });
+        });
+      }, 500);
+    })();
+    </script>
+</body></html>
