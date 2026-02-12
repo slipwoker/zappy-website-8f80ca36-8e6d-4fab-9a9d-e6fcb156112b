@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://example.com/sitemap.xml
+Sitemap: https://hakol-labayit-shirutei-handyma.zappy5.app/sitemap.xml
