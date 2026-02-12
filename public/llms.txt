@@ -1,6 +1,4 @@
-# הכל לבית שירותי הנדימן — Generative Engine Optimization Map
-
-> A שירותי תחזוקה ותיקונים business.
+# Business — Generative Engine Optimization Map
 
 ---
 
@@ -36,15 +34,7 @@ Information about WCAG compliance and accessibility features.
 
 # Business Context (for LLM understanding)
 
-## About הכל לבית שירותי הנדימן
-הכל לבית שירותי הנדימן is a business in the שירותי תחזוקה ותיקונים industry.
-
-## Target Audience
-בעלי בתים הזקוקים לתיקונים ועבודות טכניות
-
-## Industry
-שירותי תחזוקה ותיקונים
-
+## About Business
 ---
 
 # Additional Resources
